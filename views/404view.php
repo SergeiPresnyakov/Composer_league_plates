@@ -1,4 +1,3 @@
 <?php
-use League\Plates\Engine;
-$templates = new Engine('../templates');
-echo $templates->render('404template');
+use Components\View;
+echo View::on()->render('404template');
