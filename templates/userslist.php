@@ -1,10 +1,22 @@
 <?=$this->layout('layout')?>
 
 <?php
-use Components\QueryBuilder;
+session_start();
+use \Components\QueryBuilder;
+use \Tamtamchik\SimpleFlash\Flash;
+
 $db = new QueryBuilder;
 $users = $db->getAll('users');
 ?>
+    <?php
+    if (Flash::hasMessages('success')) {
+        echo Flash::display('success');
+    }
+
+    if (Flash::hasMessages('error')) {
+        echo Flash::display('error');
+    }
+    ?>
     <br>
     <a href="/create" class="btn btn-success">Add new user</a>
     <hr>

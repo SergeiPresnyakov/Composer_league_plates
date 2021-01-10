@@ -61,7 +61,9 @@ class QueryBuilder
             ->cols($data);
 
         $statement = $this->pdo->prepare($insert->getStatement());
-        $statement->execute($insert->getBindValues());
+        $isSuccessful = $statement->execute($insert->getBindValues());
+
+        return $isSuccessful;
     }
 
     /**
@@ -81,7 +83,9 @@ class QueryBuilder
             ->bindValue('id', $id);
 
         $statement = $this->pdo->prepare($update->getStatement());
-        $statement->execute($update->getBindValues());
+        $isSuccessful = $statement->execute($update->getBindValues());
+
+        return $isSuccessful;
     }
 
     /**
@@ -123,6 +127,8 @@ class QueryBuilder
             ->bindValue('id', $id);
         
         $statement = $this->pdo->prepare($delete->getStatement());
-        $statement->execute($delete->getBindValues());
+        $isSuccessful = $statement->execute($delete->getBindValues());
+
+        return $isSuccessful;
     }
 }
