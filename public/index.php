@@ -5,13 +5,12 @@ $defaultViewController = 'Components\ViewController';
 
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/', ['Components\ViewController', 'users']);
-    $r->addRoute('POST', '/create', ['Components\ViewController', 'create_user']);
+    $r->addRoute('GET', '/create', ['Components\ViewController', 'create_user']);
     $r->addRoute('POST', '/create/newuser', ['Components\ViewController', 'create_user_handler']);
     $r->addRoute('GET', '/edit/{id:\d+}', ['Components\ViewController', 'edit_user']);
     $r->addRoute('POST', '/edit/user', ['Components\ViewController', 'edit_user_handler']);
     $r->addRoute('GET', '/about', ['Components\ViewController', 'about']);
     $r->addRoute('GET', '/delete/{id:\d+}', ['Components\ViewController', 'delete_user']);
-
 });
 
 // Fetch method and URI from somewhere
@@ -38,7 +37,7 @@ switch ($routeInfo[0]) {
         $controller = new $defaultViewController;
         call_user_func([$controller, 'error405']);
         break;
-        
+
     case FastRoute\Dispatcher::FOUND:
         $handler = $routeInfo[1];
         $vars = $routeInfo[2];
