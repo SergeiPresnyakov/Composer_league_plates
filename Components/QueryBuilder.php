@@ -6,8 +6,17 @@ use PDO;
 
 class QueryBuilder
 {
-    private $pdo, $queryFactory;
+    /** PDO instance
+     * @var PDO 
+     */
+    private $pdo; 
+
+    /** QueryFactory instance
+     * @var QueryFactory
+     */
+    private $queryFactory;
     
+
     public function __construct()
     {
         $config = include '../config.php';
@@ -26,6 +35,9 @@ class QueryBuilder
 
     /**
      * Все записи из таблицы posts
+     * 
+     * @param string $table
+     * @return array
      * 
      * $db = new QueryBuilder();
      * $posts = $db->getAll('posts');
@@ -49,6 +61,10 @@ class QueryBuilder
     /**
      * Вставить новую запись в таблицу posts
      * 
+     * @param array $data
+     * @param string $table
+     * @return bool
+     * 
      * $db = new QueryBuilder();
      * $db->insert(['title' => 'Some new title', 'posts']);
      */
@@ -68,6 +84,11 @@ class QueryBuilder
 
     /**
      * Отредактировать запись с id = 10 в таблице posts
+     * 
+     * @param array $data
+     * @param int $id
+     * @param string $table
+     * @return bool
      * 
      * $db = new QueryBuilder();
      * $db->update(['title' => 'Corrected title'], 10, 'posts');
@@ -91,6 +112,10 @@ class QueryBuilder
     /**
      * Получить одну запись по id из таблицы posts
      * 
+     * @param string $table
+     * @param int $id
+     * @return array
+     * 
      * $db = new QueryBuilder();
      * $db->getOne('posts', 7);
      */
@@ -107,12 +132,16 @@ class QueryBuilder
         $statement = $this->pdo->prepare($select->getStatement());
         $statement->execute($select->getBindValues());
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-
+        
         return $result[0];
     }
     
     /**
      * Удалить запись по id из таблицы posts
+     * 
+     * @param string $table
+     * @param int $id
+     * @return bool
      * 
      * $db = new QueryBuilder();
      * $db->delete('posts', 10);

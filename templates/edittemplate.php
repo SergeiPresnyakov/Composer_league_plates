@@ -1,12 +1,5 @@
 <?=$this->layout('layout')?>
 
-<?php
-use Components\QueryBuilder;
-$db = new QueryBuilder;
-$id = $_GET['id'];
-$user = $db->getOne('users', $id);
-?>
-
 <h1>Edit user - <?php echo $user['username'];?></h1>
 
 <form action="/edit/user" method="post" class="form-control">

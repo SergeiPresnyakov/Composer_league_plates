@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'f9e728ead5e33778ccdf313eda3f7fb9f0d4d335',
+    'reference' => '6a1b983cef406e832cac0ebfb7d9b7a5eaf6e986',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'f9e728ead5e33778ccdf313eda3f7fb9f0d4d335',
+      'reference' => '6a1b983cef406e832cac0ebfb7d9b7a5eaf6e986',
     ),
     'aura/sqlquery' => 
     array (
@@ -46,6 +46,15 @@
       array (
       ),
       'reference' => '6d3ee31199b536a4e003b34a356ca20f6f75496a',
+    ),
+    'nikic/fast-route' => 
+    array (
+      'pretty_version' => 'v1.3.0',
+      'version' => '1.3.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '181d480e08d9476e61381e04a71b34dc0432e812',
     ),
     'tamtamchik/simple-flash' => 
     array (
